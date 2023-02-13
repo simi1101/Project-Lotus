@@ -9,7 +9,7 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "18a7d519-beab-4b6f-b7ea-b0e4faa3c46d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Vector3",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -55,7 +55,7 @@
                 {
                     "name": "WASD keys",
                     "id": "cbe33b56-6e59-4ae3-995f-b398e852352f",
-                    "path": "2DVector",
+                    "path": "3DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -64,7 +64,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "forward",
                     "id": "519c9165-9e71-468f-aa57-99dd56345269",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -75,7 +75,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "backward",
                     "id": "47ecf060-133c-4410-86c8-d871e2a731e0",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -86,7 +86,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "Left",
                     "id": "dcde384f-28ae-4d48-b308-eb0828b3e4e2",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -97,7 +97,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "Right",
                     "id": "ee7db382-d701-4207-8b72-07d1dc37591a",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -111,7 +111,7 @@
                     "name": "",
                     "id": "a5801186-8be3-4a9c-891d-cde48d457632",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
@@ -133,7 +133,7 @@
                     "name": "",
                     "id": "f7e7ff8d-a388-4c67-bd4d-b44579b8f854",
                     "path": "<Keyboard>/ctrl",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Crouch",
@@ -144,7 +144,7 @@
                     "name": "",
                     "id": "3cac552d-0743-4da0-a104-77bcdce0501f",
                     "path": "<Keyboard>/leftShift",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",

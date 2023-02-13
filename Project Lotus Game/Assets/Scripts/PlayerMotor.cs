@@ -10,15 +10,17 @@ public class PlayerMotor : MonoBehaviour
     private bool lerpCrouch = false;
     private bool crouching = false;
     private bool sprinting = false;
-    public float speed = 5f;
+    public float speed = 2f;
     public float gravity = -9.8f;
-    public float jumpHeight = 3f;
+    public float jumpHeight = 0.5f;
     public float crouchTimer = 1;
-
+    //attempting to add animation state controllers here
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,17 +43,28 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
+       
     }
     //This will receive the inputs for our InputManager.cs and apply them to our character controller
-    public void ProcessMove(Vector2 input)
+    public void ProcessMove(Vector3 input)
     {
-        Vector3 moveDirection = Vector3.zero;
+        Vector3 moveDirection;
         moveDirection.x = input.x;
-        moveDirection.z = input.y;
+        moveDirection.y = input.y;
+        moveDirection.z = input.z;
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         playerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -2f;
+        if (input.x < 0 || input.x > 0 || input.z < 0 || input.z > 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+            
         controller.Move(playerVelocity * Time.deltaTime);
         Debug.Log(playerVelocity.y);
 
@@ -73,8 +86,18 @@ public class PlayerMotor : MonoBehaviour
     {
         sprinting = !sprinting;
         if (sprinting)
-            speed = 8;
+        {
+            speed = 4;
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isWalking", false);
+        }
+            
         else
-            speed = 5;
+        {
+            speed = 2;
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", true);
+        }
+            
     }
 }
